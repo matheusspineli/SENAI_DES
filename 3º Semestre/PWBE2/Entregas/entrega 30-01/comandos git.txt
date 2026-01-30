@@ -1,0 +1,15 @@
+git para configurar no seu pc
+
+git config --global user.name ""
+git config --global user.email""
+
+clonar repositório
+git clone https://github.com/matheusspineli/SENAI_DES.git
+
+atualizar repositorio web
+git add . //adiciona as alterações feitas
+git commit -m "comentario" //Valida as alterações
+git push //envia as alterações
+
+atualizar repositorio local
+git pull
