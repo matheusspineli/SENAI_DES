@@ -23,7 +23,7 @@ model Carros {
 model Clientes {
   id    Int    @id @default(autoincrement())
   nome  String
-  cpf   Int
-  email String
+  cpf   String
+  email String @unique
   cnh   String
 }

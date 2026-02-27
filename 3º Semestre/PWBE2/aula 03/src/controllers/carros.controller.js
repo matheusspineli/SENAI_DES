@@ -7,15 +7,23 @@ const novoCarro = async (req, res) => {
         return res.status(400).json({ erro: "Verificar placa(deve conter 7 caracteres)" });
 
 
-    let ano = carro.ano;
+    let ano = carro.ano.trim();
     if (ano.length != 4 )
         return res.status(400).json({ erro: "Verificar Ano(deve conter 4 caracteres)" })
 
     if (typeof (carro.ano) != "number")
-        return res.status(400).json({ erro: " Não pode conter letras" })
+        return res.status(400).json({ erro: "Não pode conter letras" })
 
     //nao deixar duplicidade
-    carro.placa = carro.placa.toUpperCase();
+    const carros = await prisma.carros.findMany();
+
+        const placas = carros.some(c =>
+            c.placa.toUpperCase() === placa
+        );
+
+        if (placas) {
+            return res.status(400).json({ erro: "Ja existe um carro com essa placa" });
+        }
 
     const nCarro = await prisma.carros.create({
         data: carro
@@ -25,7 +33,7 @@ const novoCarro = async (req, res) => {
 }
 
 const listarCarros = async (req, res) => {
-    const carros = await prisma.turmas.findMany();
+    const carros = await prisma.carros.findMany();
 
     res.json(carros).status(200).end();
 };
@@ -53,10 +61,15 @@ const deletarCarro = async (req, res) => {
     res.json(carro).status(200).end();
 };
 
+const atualizarCarro = async(req, res) => {
+
+}
+
 
 module.exports = {
     novoCarro,
     listarCarros,
     buscarCarro,
-    deletarCarro
+    deletarCarro,
+    atualizarCarro
 }

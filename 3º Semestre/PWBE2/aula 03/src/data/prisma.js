@@ -5,4 +5,4 @@ const adapter = new PrismaMariaDb(process.env.DATABASE_URL);
 
 const prisma = new PrismaClient({ adapter });
 
-module.exports
+module.exports = prisma;
