@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Loja - Locadora</title>
+</head>
+
+<body>
+
+    <header>
+        <h1>Loja - Cadastro de Filmes</h1>
+        <button onclick="abrirModal()">+ Novo Filme</button>
+    </header>
+
+    <input type="text" id="filtroGenero" placeholder="Filtrar por gênero" onkeyup="filtrarGenero()">
+
+    <main>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Capa</th>
+                    <th>Genero</th>
+                    <th>Autor</th>
+                    <th>Lançamento</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody id="dados"></tbody>
+        </table>
+    </main>
+
+    <!-- Modal -->
+
+    <div id="modalCli" class="modal">
+        <form id="formCli" class="modal-content">
+            <h2>Novo Filme</h2>
+
+            <input type="text" name="nome" placeholder="Nome do Filme" required>
+            <input type="url" name="capa" placeholder="URL da Capa" required>
+            <input type="text" name="genero" placeholder="Genero" required>
+            <input type="text" name="autor" placeholder="Autor" required>
+            <input type="date" name="lancamento" required>
+
+            <div class="modal-buttons">
+                <button type="submit">Salvar</button>
+                <button type="button" onclick="fecharModal()">Cancelar</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
