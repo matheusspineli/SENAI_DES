@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Loja - Locadora</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        header {
+            background: #212529;
+        }
+
+        header h1 {
+            color: white;
+        }
+
+        img {
+            width: 100px;
+        }
+    </style>
+
+</head>
+
+<body class="bg-light">
+    <nav class="navbar" style="background-color:blueviolet;" data-bs-theme="dark">
+        <div class="container">
+
+            <a class="navbar-brand" href="#">Locadora</a>
+
+            <div class="navbar-nav flex-row gap-3">
+                <a class="nav-link active" href="#">Filmes</a>
+                <a class="nav-link" href="#">Cadastro</a>
+            </div>
+
+        </div>
+    </nav>
+
+    <header class="text-center py-5 mb-4">
+        <div class="container">
+
+            <h1 class="fw-light">Cadastro de Filmes</h1>
+
+            <button class="btn btn-success mt-3" data-bs-toggle="modal" data-bs-target="#modalCli">
+                + Novo Filme
+            </button>
+
+        </div>
+    </header>
+
+    <main class="container">
+
+        <input type="text" id="filtroGenero" class="form-control mb-3" placeholder="Filtrar por gênero"
+            onkeyup="filtrarGenero()">
+
+        <div class="table-responsive">
+
+            <table class="table table-bordered table-striped text-center">
+
+                <thead style="background-color: purple">
+                    <tr>
+                        <th>Nome</th>
+                        <th>Capa</th>
+                        <th>Genero</th>
+                        <th>Autor</th>
+                        <th>Lançamento</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+
+                <tbody id="dados"></tbody>
+
+            </table>
+
+        </div>
+
+    </main>
+
+    <div class="modal fade" id="modalCli">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form id="formCli">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Novo Filme</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+
+                    <div class="modal-body d-flex flex-column gap-2">
+                        <input type="text" name="nome" class="form-control" placeholder="Nome do Filme" required>
+                        <input type="url" name="capa" class="form-control" placeholder="URL da Capa" required>
+                        <input type="text" name="genero" class="form-control" placeholder="Genero" required>
+                        <input type="text" name="autor" class="form-control" placeholder="Autor" required>
+                        <input type="date" name="lancamento" class="form-control" required>
+                    </div>
+
+                    <div class="modal-footer">
+
+                        <button type="submit" class="btn btn-primary">
+                            Salvar
+                        </button>
+
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                            Cancelar
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>
