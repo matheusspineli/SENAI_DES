@@ -2,8 +2,8 @@ const prisma = require("../data/prisma");
 const {
     validarDataEvento,
     cancelarInscricoesDoEvento,
-    validarExclusao,
-    encerrarEventoSeNecessario
+    validarExcluir,
+    encerrarEvento
 } = require("../services/eventos.services");
 
 const cadastrar = async (req, res) => {
@@ -11,6 +11,8 @@ const cadastrar = async (req, res) => {
         const data = req.body;
 
         await validarDataEvento(data.data_evento);
+
+        data.data_evento = new Date(data.data_evento);
 
         const item = await prisma.eventos.create({ data });
 
@@ -66,7 +68,7 @@ const excluir = async (req, res) => {
     try {
         const { id } = req.params;
 
-        await validarExclusao(Number(id));
+        await validarExcluir(Number(id));
 
         const item = await prisma.eventos.delete({
             where: { id: Number(id) }

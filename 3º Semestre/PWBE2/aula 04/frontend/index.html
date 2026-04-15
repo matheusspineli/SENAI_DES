@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>GitParty</title>
+</head>
+
+<body>
+
+    <header>
+        <h1>Eventos</h1>
+        <button onclick="abrirModal()">+ Novo Evento</button>
+    </header>
+
+    <input type="text" id="filtroNome" placeholder="Filtrar por nome" onkeyup="filtrarNome()">
+
+    <main>
+        <table>
+            <thead>
+                <tr>
+                    <th>titulo</th>
+                    <th>descricao</th>
+                    <th>data_evento</th>
+                    <th>local</th>
+                    <th>capacidade_maxima</th>
+                </tr>
+            </thead>
+            <tbody id="dados"></tbody>
+        </table>
+    </main>
+
+    <!-- Modal -->
+
+    <div id="modalCli" class="modal">
+        <form id="formCli" class="modal-content">
+            <h2>Novo Evento</h2>
+
+            <input type="text" name="titulo" placeholder="Titulo do Evento" required>
+            <input type="url" name="descricao" placeholder="Descrição" required>
+            <input type="date" name="data_evento" placeholder="Data do Evento" required>
+            <input type="text" name="local" placeholder="Local do evento" required>
+            <input type="text" name="capacidade_maxima" placeholder="Capacidade Maxima">
+
+            <div class="modal-buttons">
+                <button type="submit">Salvar</button>
+                <button type="button" onclick="fecharModal()">Cancelar</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
