@@ -30,18 +30,37 @@ model Eventos {
   local             String
   capacidade_maxima Int
   status            StatusEventos @default(ATIVO)
+  data_criacao      DateTime      @default(now())
 
   inscricoes Inscricoes[]
+  imagens    Imagem[]
 }
 
 model Inscricoes {
   id             Int             @id @default(autoincrement())
   data_inscricao DateTime        @default(now())
   status         StatusInscricao @default(CONFIRMADA)
-  eventos        Eventos         @relation(fields: [eventosId], references: [id])
-  eventosId      Int
-  usuarios       Usuarios       @relation(fields: [usuariosId], references: [id])
-  usuariosId     Int
+
+  evento   Eventos @relation(fields: [eventoId], references: [id])
+  eventoId Int
+
+  usuario   Usuarios @relation(fields: [usuarioId], references: [id])
+  usuarioId Int
+
+  @@unique([eventoId, usuarioId]) 
+}
+
+model Imagem {
+  id           Int      @id @default(autoincrement())
+  nomeOriginal String   
+  nomeArquivo  String   
+  mimeType     String   
+  path         String   
+  tamanho      Int?    
+  data_upload  DateTime @default(now())
+
+  evento   Eventos @relation(fields: [eventoId], references: [id], onDelete: Cascade)
+  eventoId Int
 }
 
 enum StatusInscricao {
